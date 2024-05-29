@@ -34,7 +34,7 @@ body {
 }
 
 .form-submit {
-  background-color: #007bff;
+  background-color: #0066BE;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -95,4 +95,23 @@ body {
   width: 80%;
   max-width: 300px;
   text-align: center;
+}
+
+
+#event-form input,
+#event-form select {
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#event-form input[type="submit"] {
+    background-color: #0066BE;
+    color: white;
+    cursor: pointer;
+}
+
+#event-form input[type="submit"]:hover {
+    background-color: #0066BE;
 }
