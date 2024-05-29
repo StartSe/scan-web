@@ -8,10 +8,15 @@
 </head>
 
 <body>
-    
+
     <div id="modal" style="display: none;">
         <div class="modal-content">
             <h2>Loading...</h2>
+        </div>
+    </div>
+    <div id="modal-error" style="display: none;">
+        <div class="modal-error-content">
+            <h2>Erro. Escaneie novamente</h2>
         </div>
     </div>
     <div>
@@ -115,7 +120,7 @@
                 document.getElementById('modal').style.display = 'block';
                 // Bloquear o scan por 3 segundos
                 // make a fetch to n8n webhook
-                fetch('https://n8n.startse.com/webhook-test/dbe8604b-3ecb-4988-88d8-a75c21da5f58', {
+                fetch('htthttps://n8n.startse.com/webhook/dbe8604b-3ecb-4988-88d8-a75c21da5f58', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -132,6 +137,12 @@
                     })
                     .catch((error) => {
                         console.error('Error:', error);
+                        document.getElementById('modal').style.display = 'none';
+                        document.getElementById('modal-error').style.display = 'block';
+                        setTimeout(() => {
+                            document.getElementById('modal-error').style.display = 'none';
+                        }, 1500);
+                        canScan = true
                     });
                 console.log(result.data);
                 label.textContent = result.data;
@@ -178,10 +189,10 @@
             // for debugging
             window.scanner = scanner;
 
-            document.getElementById('scan-region-highlight-style-select').addEventListener('change', (e) => {
-                videoContainer.className = e.target.value;
-                scanner._updateOverlay(); // reposition the highlight because style 2 sets position: relative
-            });
+            // document.getElementById('scan-region-highlight-style-select').addEventListener('change', (e) => {
+            //     videoContainer.className = e.target.value;
+            //     scanner._updateOverlay(); // reposition the highlight because style 2 sets position: relative
+            // });
 
             document.getElementById('show-scan-region').addEventListener('change', (e) => {
                 const input = e.target;
